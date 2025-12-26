@@ -23,8 +23,8 @@
 
 .task-content {
   border-radius: 2px;
-  padding: 6px;
-  font-size: 1.1rem;
+  padding: 0.5rem;
+  font-size: 1.11rem;
   overflow-y: auto;
   overflow-wrap: break-word;
   border-left: 4px solid rgba(0, 94, 255, 0.498);
