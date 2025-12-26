@@ -1,0 +1,24 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 30px 0;
+  padding-inline: 10px;
+  gap: 20px;
+}
+
+.controls-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (width >= 40rem){
+  .controls{
+    flex-direction: row;
+  }
+
+  .controls-group{
+    flex-direction: row;
+  }
+}

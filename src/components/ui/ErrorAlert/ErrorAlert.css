@@ -1,0 +1,9 @@
+.error-alert{
+  display: flex;
+  justify-content: center;
+  background-color: rgba(255, 0, 0, 0.037);
+  border: 2px solid red;
+  border-radius: 10px;
+  padding: 0.5rem;
+  color: red;
+}

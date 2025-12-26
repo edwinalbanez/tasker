@@ -1,0 +1,71 @@
+.task-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 20px;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  height: 200px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border: 0.5px solid rgba(211, 211, 211, 0.445);
+}
+
+.task-item-header {
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+.task-date {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.task-content {
+  border-radius: 2px;
+  padding: 6px;
+  font-size: 1.1rem;
+  overflow-y: auto;
+  overflow-wrap: break-word;
+  border-left: 4px solid rgba(0, 94, 255, 0.498);
+}
+
+.task-content.completed {
+  background-color: rgba(9, 188, 21, 0.037);
+  border-left: 4px solid rgba(5, 136, 14, 0.498);
+}
+
+.task-content.pending {
+  background-color: rgba(0, 94, 255, 0.039);
+  border-left: 4px solid rgba(0, 94, 255, 0.498);
+}
+
+.task-item-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .status-badge {
+    display: flex;
+    font-size: 1rem;
+    gap: 3px;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+  }
+  
+  & .status-badge.completed {
+    cursor: default;
+    font-style: italic;
+    color: green;
+  }
+  
+  & .status-badge.pending {
+    cursor: pointer;
+  }
+}
+
+.delete-icon{
+  color: rgba(255, 0, 0, 0.495);
+  cursor: pointer;
+}

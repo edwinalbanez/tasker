@@ -1,0 +1,21 @@
+.button-primary {
+  background-color: rgba(0, 94, 255, 0.847);
+  border-radius: 5px;
+  color: white;
+  border: none;
+  padding-inline: 10px;
+  font-size: 1.100rem;
+  height: 2.5rem;
+  width: 100%;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.button-secondary {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgba(211, 211, 211, 0.356);
+  padding-inline: 10px;
+  font-size: 1.100rem;
+  height: 2.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}

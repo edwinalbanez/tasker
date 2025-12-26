@@ -1,0 +1,6 @@
+@media (width >= 40rem){
+  .task-search{
+    width: 40%;
+    margin: 0 0;
+  }
+}

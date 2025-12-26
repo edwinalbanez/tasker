@@ -1,0 +1,8 @@
+.empty-task-list {
+  display: flex;
+  color: gray;
+  justify-content: center;
+  align-items: center;
+  height: 11rem;
+  font-family: Helvetica, sans-serif;
+}
