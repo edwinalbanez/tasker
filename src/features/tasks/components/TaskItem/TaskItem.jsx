@@ -43,16 +43,28 @@ function TaskItem({ task }) {
 }
 
 function ItemHeader({ children }) {
-  return <div className="task-item-header">{children}</div>;
+  return (
+    <div className="task-item-header">
+    {children}
+    </div>
+  )
 }
 
 function ItemContent({ children, completed }) {
   const statusClass = completed ? "completed" : "pending";
-  return <div className={`task-content ${statusClass}`}>{children}</div>;
+  return (
+    <div className={`task-content ${statusClass}`}>
+      {children}
+    </div>
+  );
 }
 
 function ItemFooter({ children }) {
-  return <div className="task-item-footer">{children}</div>;
+  return (
+    <div className="task-item-footer">
+      {children}
+    </div>
+  );
 }
 
 export { TaskItem };

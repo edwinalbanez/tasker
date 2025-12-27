@@ -13,11 +13,12 @@
 .task-item-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: fit-content;
 }
 
 .task-date {
-  color: gray;
+  color: rgba(128, 128, 128, 0.977);
   font-size: 0.9rem;
 }
 
