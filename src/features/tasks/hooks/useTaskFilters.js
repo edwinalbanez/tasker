@@ -1,10 +1,15 @@
-import { useMemo } from "react";
-import useSearchFilter from "./useSearchFilter";
-import useStatusFilter from "./useStatusFilter";
+import { useCallback } from "react";
+import {
+  useState,
+  useMemo
+} from "react";
 
 const useTaskFilters = (tasks) => {
-  const [search, handleChangeSearch] = useSearchFilter();
-  const [tasksStatus, handleChangeStatus] = useStatusFilter();
+  const [search, setSearch] = useState("");
+  const handleChangeSearch = useCallback(({ target }) => setSearch(target.value), []);
+
+  const [tasksStatus, setTasksStatus] = useState('Todas');
+  const handleChangeStatus = useCallback(({ target }) => setTasksStatus(target.value), []);
 
   const filteredTasks = useMemo(() => {
     const searchText = search.toLocaleLowerCase();

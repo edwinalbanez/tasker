@@ -1,33 +1,34 @@
-import { useState } from "react";
-import useTaskStorage from "./useTaskStorage";
+import { useTaskActions } from "./useTaskActions";
 import useTaskFilters from "./useTaskFilters";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import defaultTasks from "@/utils/defaultTasks";
 
 const useTasks = () => {
-  const [ tasks, setTasks ] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(true);
-  const [error, setError ] = useState(false);
-  const [ saveTasks, getTasks ] = useLocalStorage('TASKS');
+  const {
+    tasks,
+    setInitalTasks,
+    completeTask,
+    addTask,
+    deleteTask,
+  } = useTaskActions();
+  
+  const [, getTasks ] = useLocalStorage('TASKS');
 
   const totalTasks = tasks ? tasks.length : 0;
   const completedTasks = tasks ? tasks.filter((task) => !!task.completed).length : 0;
 
+  const [ isLoading, setIsLoading ] = useState(true);
+  const [error, setError ] = useState(false);
+
+  //simular que los datos tardan
   useEffect(() => {  
     const timer = setTimeout(() => {
       try {
         const tasksFromStorage = getTasks();
-        if (!tasksFromStorage) {
-          saveTasks(defaultTasks);
-          setTasks(defaultTasks);
-          setIsLoading(false);
-          return;
-        }
-
-        setTasks(tasksFromStorage);
-        setIsLoading(false);
-          
+        const isEmpty = tasksFromStorage.length === 0
+        setInitalTasks(isEmpty ? defaultTasks : tasksFromStorage);
+        setIsLoading(!isEmpty);
       } catch (error) {
         setError(true);
         setIsLoading(false);
@@ -41,12 +42,6 @@ const useTasks = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
-
-  const {
-    completeTask,
-    addTask,
-    deleteTask,
-  } = useTaskStorage(tasks, setTasks);
 
   const {
     search,

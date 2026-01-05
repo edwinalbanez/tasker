@@ -15,12 +15,7 @@ const TaskForm = () => {
       return window.alert("Escribe algo para agregarlo correctamente.");
     }
 
-    addTask({
-      id: crypto.randomUUID(),
-      text: newTask.trim(),
-      completed: false,
-      date: new Date().toISOString(),
-    });
+    addTask(newTask);
     toggleModal();
     setNewTask("");
   };

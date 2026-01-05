@@ -3,6 +3,8 @@ import { useTasks } from "@/features/tasks";
 import { TaskStateContext, TaskActionsContext } from "./TaskContext";
 
 const TaskProvider = ({ children }) => {
+  console.log("provider");
+  
   const {
     isLoading,
     error,

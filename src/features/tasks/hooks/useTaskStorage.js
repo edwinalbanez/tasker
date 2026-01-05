@@ -1,33 +1,35 @@
 import { useCallback } from "react";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { useReducer } from "react";
+import { useTaskActions } from "./useTaskActions";
 
-const useTaksStorage = (tasks, setTasks) => {
-  const [ saveTasks ] = useLocalStorage('TASKS');
+const useTaksStorage = () => {
+  const { tasks, ...taskActions } = useTaskActions();
+  // const [ tasks, dispatch ] = useReducer(reducer, []);
+  const [ storeTasks ] = useLocalStorage('TASKS');
 
   const completeTask = useCallback((id) => {
-      const newTasks = tasks.map(task =>
-        task.id === id ? { ...task, completed: true } : task
-      );
-      saveTasks(newTasks);
+      taskActions.complete(id);
+      storeTasks(newTasks);
       setTasks(newTasks)
     },
-    [tasks, saveTasks, setTasks]
+    [tasks, storeTasks, taskActions]
   );
 
   const addTask = useCallback(task => {
       const newTasks = [...tasks];
       newTasks.unshift(task);
-      saveTasks(newTasks);
+      storeTasks(newTasks);
       setTasks(newTasks)
-    }, [tasks, saveTasks, setTasks]
+    }, [tasks, storeTasks, setTasks]
   );
 
   const deleteTask = useCallback((id) => {
       const newTasks = tasks.filter((task) => task.id !== id);
-      saveTasks(newTasks);
+      storeTasks(newTasks);
       setTasks(newTasks);
     },
-    [tasks, saveTasks, setTasks]
+    [tasks, storeTasks, setTasks]
   );
 
   return {
