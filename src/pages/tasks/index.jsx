@@ -17,7 +17,9 @@ import {
 const Index = () => {
   const { filteredTasks, totalTodos, isLoading, error } = useTaskState();
 
-  const isEmpty = !isLoading && totalTodos === 0;
+  const isEmpty = totalTodos === 0;
+  console.log(isEmpty);
+  
 
   return (
     <div className="task-container">
@@ -32,11 +34,11 @@ const Index = () => {
 
       {error && <ErrorAlert>Ocurrió un error inesperado.</ErrorAlert>}
       {isLoading && <LayoutTaskSkeleton />}
-      {isEmpty && <EmptyTaskList />}
+      {isEmpty && !isLoading && <EmptyTaskList />}
 
-      {!isEmpty && (
+      {!isEmpty && !isLoading && (
         <TaskList>
-          {filteredTasks.map(task => (
+          {filteredTasks.map((task) => (
             <TaskItem key={task.id} task={task} />
           ))}
         </TaskList>
