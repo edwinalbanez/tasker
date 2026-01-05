@@ -1,4 +1,5 @@
 // import defaultTasks from "@/utils/defaultTasks";
+import defaultTasks from "@/utils/defaultTasks";
 import { useCallback } from "react";
 import { useReducer, useEffect } from "react";
 
@@ -13,9 +14,6 @@ const reducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case TASK_ACTIONS.INIT:
-      return payload.tasks
-
     case TASK_ACTIONS.COMPLETE:
       return state.map(
         task => task.id === payload.id
@@ -34,24 +32,17 @@ const reducer = (state, action) => {
   }
 }
 
-// function getInitialState(){
-//   const savedTasks = window.localStorage.getItem('TASKS');
-//   return savedTasks ? JSON.parse(savedTasks): defaultTasks;
-// }
+function createInitialState(){
+  const savedTasks = window.localStorage.getItem('TASKS');
+  return savedTasks ? JSON.parse(savedTasks) : defaultTasks;
+}
 
 const useTaskActions = () => {
-  const [ tasks, dispatch ] = useReducer(reducer, []);
+  const [ tasks, dispatch ] = useReducer(reducer, [], createInitialState);
 
   useEffect(() => {
     window.localStorage.setItem('TASKS', JSON.stringify(tasks));
   }, [tasks]);
-
-  const setInitalTasks = useCallback((tasks) => {
-    dispatch({
-      type: TASK_ACTIONS.INIT,
-      payload: { tasks }
-    })
-  }, []);
 
   const completeTask = useCallback((id) => {
     dispatch({
@@ -77,17 +68,15 @@ const useTaskActions = () => {
   }, [])
 
   const deleteTask = useCallback((id) => {
-    
     dispatch({
       type: TASK_ACTIONS.DELETE,
       payload: { id }
     });
 
-  }, [])
+  }, []);
 
   return {
     tasks,
-    setInitalTasks,
     completeTask,
     addTask,
     deleteTask

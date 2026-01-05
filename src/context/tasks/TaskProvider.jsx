@@ -2,9 +2,7 @@ import { useMemo } from "react";
 import { useTasks } from "@/features/tasks";
 import { TaskStateContext, TaskActionsContext } from "./TaskContext";
 
-const TaskProvider = ({ children }) => {
-  console.log("provider");
-  
+const TaskProvider = ({ children }) => {  
   const {
     isLoading,
     error,
