@@ -16,10 +16,7 @@ import {
 
 const Index = () => {
   const { filteredTasks, totalTodos, isLoading, error } = useTaskState();
-
   const isEmpty = totalTodos === 0;
-  console.log(isEmpty);
-  
 
   return (
     <div className="task-container">
