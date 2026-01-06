@@ -37,7 +37,7 @@ function createInitialState(){
   return savedTasks ? JSON.parse(savedTasks) : defaultTasks;
 }
 
-const useTaskActions = () => {
+const useActions = () => {
   const [ tasks, dispatch ] = useReducer(reducer, [], createInitialState);
 
   useEffect(() => {
@@ -84,4 +84,4 @@ const useTaskActions = () => {
 
 }
 
-export { useTaskActions };
+export { useActions };

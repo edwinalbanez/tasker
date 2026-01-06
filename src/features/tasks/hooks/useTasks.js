@@ -1,4 +1,4 @@
-import { useTaskActions } from "./useTaskActions";
+import { useActions } from "./useActions";
 import useTaskFilters from "./useTaskFilters";
 import { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ const useTasks = () => {
     completeTask,
     addTask,
     deleteTask,
-  } = useTaskActions();
+  } = useActions();
 
   const totalTasks = tasks ? tasks.length : 0;
   const completedTasks = tasks ? tasks.filter((task) => !!task.completed).length : 0;
