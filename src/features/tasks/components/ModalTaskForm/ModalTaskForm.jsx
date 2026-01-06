@@ -12,7 +12,7 @@ const ModalTaskForm = () => {
   return (
     <Modal>
       <ModalTrigger>
-        <Button>Agregar tarea</Button>
+        <Button>Agregar</Button>
       </ModalTrigger>
       <ModalContainer>
         <ModalBody>

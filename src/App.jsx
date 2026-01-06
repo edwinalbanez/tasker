@@ -3,11 +3,9 @@ import { Tasks } from "./pages/tasks";
 
 function App() {
   return (
-    <div>
-      <main className="main-content">
-        <Tasks/>
-      </main>
-    </div>
+    <main className="main-content">
+      <Tasks />
+    </main>
   );
 }
 

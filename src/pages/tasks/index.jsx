@@ -35,9 +35,9 @@ const Index = () => {
 
       {!isEmpty && !isLoading && (
         <TaskList>
-          {filteredTasks.map((task) => (
+          {filteredTasks.map(task => 
             <TaskItem key={task.id} task={task} />
-          ))}
+          )}
         </TaskList>
       )}
     </div>
