@@ -24,6 +24,7 @@ const TaskForm = () => {
     <form onSubmit={handleSubmit}>
       <label>Esribe tu nuevo TODO</label>
       <textarea
+        spellCheck
         required
         autoCapitalize="words"
         value={newTask}
